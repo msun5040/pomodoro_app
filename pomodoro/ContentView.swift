@@ -1,24 +1,38 @@
 //
-//  ContentView.swift
+//  contentView.swift
 //  pomodoro
 //
-//  Created by Michael Sun on 5/24/24.
+//  Created by Michael Sun on 5/25/24.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct contentView: View {
+    
+    @StateObject var timing = timeInfo()
+    
     var body: some View {
+
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            TabView() {
+                timerView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                            .accentColor(Color(red: 144/255, green: 212/255, blue: 145/255))
+                    }
+                settingsView()
+                    .tabItem {
+                        Image(systemName: "person")
+                        Text("Settings")
+                    }
+            }
+            .padding()
+            .environmentObject(timing)
         }
-        .padding()
     }
+    
 }
 
 #Preview {
-    ContentView()
+    contentView()
 }

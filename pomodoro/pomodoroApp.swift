@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct pomodoroApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            contentView().environmentObject(timeInfo())
         }
     }
 }
+
