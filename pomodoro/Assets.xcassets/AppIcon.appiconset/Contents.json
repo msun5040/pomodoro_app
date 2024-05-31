@@ -1,36 +1,43 @@
 {
   "images" : [
     {
+      "filename" : "Tomato Icon Food Drink (3).png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
+      "filename" : "Tomato Icon Food Drink (4) 1.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
     },
     {
+      "filename" : "Tomato Icon Food Drink (4).png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
     },
     {
+      "filename" : "Tomato Icon Food Drink.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "32x32"
     },
     {
+      "filename" : "Tomato Icon Food Drink (1).png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
+      "filename" : "Tomato Icon Food Drink (2).png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
+      "filename" : "Tomato Icon Food Drink (2) 1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"

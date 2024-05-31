@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import UserNotifications
 
 enum Phase {
     case session
@@ -9,6 +10,7 @@ enum Phase {
 
 struct timerView: View {
     @EnvironmentObject var timing: timeInfo
+    var timerNotificationHandler: () -> Void
     
     @State private var timeRemaining: TimeInterval = 10
     @State private var startTime: Date?
@@ -36,8 +38,10 @@ struct timerView: View {
     @State private var currentPhase: Phase = .session
     @State private var timeLen: Double = 50
     
-    
+    // Visibility
     @State private var showAlert: Bool = false
+    @State private var showBreakButton: Bool = false
+    
     
     @ScaledMetric(relativeTo: .body) var scaledPadding: CGFloat = 15
     
@@ -82,14 +86,7 @@ struct timerView: View {
             }
             
             HStack {
-                Button(action: {
-                    isRunning.toggle()
-                    if isRunning {
-                        startTimer(phase: currentPhase)
-                    } else {
-                        pauseTimer()
-                    }
-                }) {
+                Button(action: {pressStartButton()}) {
                     Image(systemName: isRunning ? "pause.fill" : "play.fill")
                         .frame(width: 50, height: 50)
                         .font(.largeTitle)
@@ -106,20 +103,25 @@ struct timerView: View {
                 .buttonStyle(PlainButtonStyle())
                 
                 Button(action: {
-                    stopTimer()
-                    setTimes()
-                    resetCounters()
-                    showAlert = true
-                    
+                    pressResetButton()
                 }) {
                     Image(systemName: "arrow.counterclockwise")
                         .frame(width: 50, height: 50)
                         .font(.largeTitle)
                 }
                 .buttonStyle(PlainButtonStyle())
+            }
+            
+            HStack{
+                Button(action: {startTimer(phase: currentPhase); showBreakButton.toggle()}) {
+                    Text("Start Break")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                }
+                .opacity(self.showBreakButton ? 1 : 0)
+                .font(.title3)
+                .buttonStyle(.bordered)
+                .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 
-                
-
             }
         }
         .padding()
@@ -131,6 +133,24 @@ struct timerView: View {
                 )
             }
         
+        
+    }
+    
+    public func pressStartButton() {
+        isRunning.toggle()
+        if isRunning {
+            startTimer(phase: currentPhase)
+        } else {
+            pauseTimer()
+        }
+    }
+    
+    private func pressResetButton() {
+        stopTimer()
+        setTimes()
+        resetCounters()
+        showAlert = true
+        currentPhase = .session
     }
     
     private func formattedTime() -> String {
@@ -154,6 +174,9 @@ struct timerView: View {
     
     private func startTimer(phase: Phase) {
         startTime = Date()
+        self.isRunning = true
+        self.showBreakButton = false
+        
         switch phase {
         case .session:
             self.timeLen = Double(sessionLen)
@@ -179,6 +202,7 @@ struct timerView: View {
         if sessionCounter != numSessions{
             switch currentPhase {
             case .session:
+                showBreakButton.toggle()
                 workSessionsCounter += 1
                 if longBreakIntervalCounter == longBreakInterval {
                     currentPhase = .longBreak
@@ -195,10 +219,10 @@ struct timerView: View {
                 shortBreaksCount = 0
                 currentPhase = .session
             }
-            startTimer(phase: currentPhase)
         } else {
             sessionCounter = 0
         }
+        timerNotificationHandler()
     }
 
     private func pauseTimer() {
@@ -222,8 +246,9 @@ struct timerView: View {
         shortBreaksCount = 0
         longBreakIntervalCounter = 0
     }
+    
 }
 
 #Preview {
-    timerView().environmentObject(timeInfo())
+    timerView(timerNotificationHandler: { }).environmentObject(timeInfo())
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor class timeInfo: ObservableObject {
     @Published var numSessions = "1"
-    @Published var sessionLen = "25"
+    @Published var sessionLen = "0.05"
     @Published var shortBreakLen = "5"
     @Published var longBreakLen = "10"
     @Published var longBreakInterval = "2"

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6954B5652C0A5DCF0072A095 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6954B5642C0A5DCF0072A095 /* .gitignore */; };
 		698E95D62C02E3B900E4A905 /* contentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698E95D52C02E3B900E4A905 /* contentView.swift */; };
 		698E95D82C02E5FA00E4A905 /* titleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698E95D72C02E5FA00E4A905 /* titleView.swift */; };
 		698E95DF2C02EA0000E4A905 /* timerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698E95DE2C02EA0000E4A905 /* timerView.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6954B5642C0A5DCF0072A095 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		698E95D12C018D9E00E4A905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		698E95D22C018F0B00E4A905 /* Dosis-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.ttf"; sourceTree = "<group>"; };
 		698E95D52C02E3B900E4A905 /* contentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		69DE04522C00FB3300649C7A = {
 			isa = PBXGroup;
 			children = (
+				6954B5642C0A5DCF0072A095 /* .gitignore */,
 				698E95CF2C018B8500E4A905 /* Shared */,
 				69DE045D2C00FB3300649C7A /* pomodoro */,
 				69DE046F2C00FB3500649C7A /* pomodoroTests */,
@@ -276,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69DE04662C00FB3500649C7A /* Preview Assets.xcassets in Resources */,
+				6954B5652C0A5DCF0072A095 /* .gitignore in Resources */,
 				69DE04632C00FB3500649C7A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

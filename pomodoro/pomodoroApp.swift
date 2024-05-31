@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 @main
 struct pomodoroApp: App {
@@ -16,4 +17,3 @@ struct pomodoroApp: App {
         }
     }
 }
-
